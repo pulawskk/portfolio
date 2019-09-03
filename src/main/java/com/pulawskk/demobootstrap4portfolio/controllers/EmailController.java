@@ -1,5 +1,6 @@
 package com.pulawskk.demobootstrap4portfolio.controllers;
 
+import com.pulawskk.demobootstrap4portfolio.services.PropertyServiceForJasyptStarter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,12 +13,21 @@ import java.util.Map;
 @Controller
 public class EmailController {
 
+    private final PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
+
+    public EmailController(PropertyServiceForJasyptStarter propertyServiceForJasyptStarter) {
+
+        this.propertyServiceForJasyptStarter = propertyServiceForJasyptStarter;
+    }
+
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam Map<String, String> requestParams) {
         String name = requestParams.get("name");
         String email = requestParams.get("email");
         String message = requestParams.get("message");
         String phone = requestParams.get("phone");
+
+        String pass = propertyServiceForJasyptStarter.getProperty();
         System.out.println(name + " | " + email + " | " + message + " | " + phone);
         return "redirect:index#contact";
     }
