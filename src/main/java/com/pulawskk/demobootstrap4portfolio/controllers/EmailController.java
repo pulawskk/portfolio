@@ -1,23 +1,22 @@
 package com.pulawskk.demobootstrap4portfolio.controllers;
 
+import com.pulawskk.demobootstrap4portfolio.services.EmailService;
 import com.pulawskk.demobootstrap4portfolio.services.PropertyServiceForJasyptStarter;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller
 public class EmailController {
 
     private final PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
+    private final EmailService emailService;
 
-    public EmailController(PropertyServiceForJasyptStarter propertyServiceForJasyptStarter) {
-
+    public EmailController(PropertyServiceForJasyptStarter propertyServiceForJasyptStarter, EmailService emailService) {
         this.propertyServiceForJasyptStarter = propertyServiceForJasyptStarter;
+        this.emailService = emailService;
     }
 
     @PostMapping("/sendEmail")
@@ -27,7 +26,9 @@ public class EmailController {
         String message = requestParams.get("message");
         String phone = requestParams.get("phone");
 
-        String pass = propertyServiceForJasyptStarter.getProperty();
+        emailService.sendSimpleMessage(email, "subject-karol: " + name, message);
+
+//        String pass = propertyServiceForJasyptStarter.getProperty();
         System.out.println(name + " | " + email + " | " + message + " | " + phone);
         return "redirect:index#contact";
     }
