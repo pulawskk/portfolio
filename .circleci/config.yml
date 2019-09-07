@@ -31,7 +31,6 @@ jobs:
             - v1-dependencies-
 
       - run: mvn dependency:go-offline
-#        command: jasypt.encryptor.password password
 
       - save_cache:
           paths:
