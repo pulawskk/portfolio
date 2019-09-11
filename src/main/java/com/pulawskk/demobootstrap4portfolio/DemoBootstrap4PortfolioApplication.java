@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoBootstrap4PortfolioApplication {
 
     public static void main(String[] args) {
-        System.setProperty(args[0], args[1]);
         SpringApplication.run(DemoBootstrap4PortfolioApplication.class, args);
     }
 
