@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PropertyServiceForJasyptStarter {
 
-    @Value("${encrypted.property}")
+    @Value("${spring.mail.password}")
     private String property;
 
     public String getProperty() {
@@ -15,6 +15,6 @@ public class PropertyServiceForJasyptStarter {
     }
 
     public String getPasswordUsingEnvironment(Environment environment) {
-        return environment.getProperty("encrypted.property");
+        return environment.getProperty("spring.mail.password");
     }
 }

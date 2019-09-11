@@ -15,9 +15,4 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public LayoutDialect layoutDialect() {
         return new LayoutDialect();
     }
-
-//    @Bean
-//    public JavaMailSender javaMailSender() {
-//        return new JavaMailSenderImpl();
-//    }
 }

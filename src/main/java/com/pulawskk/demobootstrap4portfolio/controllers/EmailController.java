@@ -25,10 +25,8 @@ public class EmailController {
         String email = requestParams.get("email");
         String message = requestParams.get("message");
         String phone = requestParams.get("phone");
-
         emailService.sendSimpleMessage(email, "subject-karol: " + name, message);
 
-//        String pass = propertyServiceForJasyptStarter.getProperty();
         System.out.println(name + " | " + email + " | " + message + " | " + phone);
         return "redirect:index#contact";
     }
