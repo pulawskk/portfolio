@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PropertyServiceForJasyptStarter {
 
-    @Value("${spring.mail.password}")
+//    @Value("${spring.mail.password}")
+    @Value("spring.mail.password")
     private String property;
 
     public String getProperty() {
