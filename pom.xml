@@ -20,7 +20,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-        <maven.compiler.release>11</maven.compiler.release>
+<!--        <maven.compiler.release>11</maven.compiler.release>-->
     </properties>
 
     <dependencies>
@@ -142,11 +142,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
-                <configuration>
-                    <release>11</release>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <release>11</release>-->
+<!--                    <source>11</source>-->
+<!--                    <target>11</target>-->
+<!--                </configuration>-->
             </plugin>
 
 <!--            <plugin>-->
