@@ -14,6 +14,8 @@ public class EmailController {
     private final PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
     private final EmailService emailService;
 
+    private static final String MY_EMAIL = "pulawskk@gmail.com";
+
     public EmailController(PropertyServiceForJasyptStarter propertyServiceForJasyptStarter, EmailService emailService) {
         this.propertyServiceForJasyptStarter = propertyServiceForJasyptStarter;
         this.emailService = emailService;
@@ -25,8 +27,15 @@ public class EmailController {
         String email = requestParams.get("email");
         String message = requestParams.get("message");
         String phone = requestParams.get("phone");
-        emailService.sendSimpleMessage(email, "subject-karol: " + name, message);
-        System.out.println(name + " | " + email + " | " + message + " | " + phone);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(message)
+                .append("\n\n")
+                .append("from: " + email)
+                .append("\n\n")
+                .append("phone number: " + phone)
+                .append("\n\n");
+        emailService.sendSimpleMessage(MY_EMAIL, "subject: " + name, stringBuilder.toString());
         return "redirect:index#contact";
     }
 }
