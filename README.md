@@ -1,5 +1,7 @@
 # admin_template
-Template of Bootstrap 4 admin SpringBoot app.
+My own portfolio using Bootstrap 4 admin SpringBoot app.
+
+Current Circle CI build: [![CircleCI](https://circleci.com/gh/KarolPulawski/portfolio_karol.svg?style=svg&circle-token=d5e8492d3492d5d15571ba2e3eee24a8a0e51269)](https://circleci.com/gh/KarolPulawski/portfolio_karol)
 
 First to do:
 
