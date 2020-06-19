@@ -1,7 +1,6 @@
 package com.pulawskk.demobootstrap4portfolio.controllers;
 
 import com.pulawskk.demobootstrap4portfolio.services.EmailService;
-import com.pulawskk.demobootstrap4portfolio.services.PropertyServiceForJasyptStarter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
