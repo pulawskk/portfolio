@@ -327,11 +327,19 @@
     <div class = "container">
       <div class="row">
         <div class="col-12 mx-auto text-center">
-<!--          <h2 class="section-heading">Hobbies</h2>-->
           <div id="my-slider" class="carousel slide" data-ride="carousel">
 
+            <!--indicators-->
+            <ol class="carousel-indicators">
+              <li data-target="#my-slider" data-slide-to="0" class="active"></li>
+              <li data-target="#my-slider" data-slide-to="1"></li>
+              <li data-target="#my-slider" data-slide-to="2"></li>
+              <li data-target="#my-slider" data-slide-to="3"></li>
+              <li data-target="#my-slider" data-slide-to="4"></li>
+            </ol>
+
             <!--slide gallery-->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox" style="height: 80vh">
               <div class="carousel-item active">
                 <img src="img/about/hobby_chelsea.jpg" alt="hello">
                 <div class="carousel-caption">
