@@ -11,13 +11,11 @@ import java.util.Map;
 @Controller
 public class EmailController {
 
-    private final PropertyServiceForJasyptStarter propertyServiceForJasyptStarter;
     private final EmailService emailService;
 
     private static final String MY_EMAIL = "pulawskk@gmail.com";
 
-    public EmailController(PropertyServiceForJasyptStarter propertyServiceForJasyptStarter, EmailService emailService) {
-        this.propertyServiceForJasyptStarter = propertyServiceForJasyptStarter;
+    public EmailController(EmailService emailService) {
         this.emailService = emailService;
     }
 
