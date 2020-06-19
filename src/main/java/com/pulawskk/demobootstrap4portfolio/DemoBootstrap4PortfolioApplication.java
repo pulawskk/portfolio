@@ -1,6 +1,5 @@
 package com.pulawskk.demobootstrap4portfolio;
 
-import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
