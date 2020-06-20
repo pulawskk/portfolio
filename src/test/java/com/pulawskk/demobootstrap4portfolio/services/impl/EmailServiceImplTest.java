@@ -9,8 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class EmailServiceImplTest {
@@ -22,6 +21,9 @@ class EmailServiceImplTest {
 
     @Mock
     JavaMailSenderImpl javaMailSender;
+
+    @Mock
+    RabbitMQService rabbitMQService;
 
     SimpleMailMessage message;
 
@@ -37,11 +39,13 @@ class EmailServiceImplTest {
         message.setSubject("subject-test");
         message.setText("text of message");
         message.setFrom(EMAIL_FROM);
+        when(rabbitMQService.publish(message.toString())).thenReturn(true);
 
         //when
         emailService.sendSimpleMessage(message.getTo()[0], message.getSubject(), message.getText());
 
         //then
         verify(javaMailSender, times(1)).send(message);
+        verify(rabbitMQService, times(1)).publish(message.toString());
     }
 }
