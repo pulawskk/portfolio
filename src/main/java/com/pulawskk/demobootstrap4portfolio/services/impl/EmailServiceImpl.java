@@ -1,10 +1,13 @@
 package com.pulawskk.demobootstrap4portfolio.services.impl;
 
+import com.pulawskk.demobootstrap4portfolio.models.Email;
 import com.pulawskk.demobootstrap4portfolio.services.EmailService;
 import com.pulawskk.demobootstrap4portfolio.services.JmsBrokerService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EmailServiceImpl implements EmailService {
