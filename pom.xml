@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.pulawskk</groupId>
     <artifactId>demo-bootstrap4-portfolio</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>demo-bootstrap4-portfolio</name>
     <description>Demo project for Spring Boot</description>
     <packaging>jar</packaging>
