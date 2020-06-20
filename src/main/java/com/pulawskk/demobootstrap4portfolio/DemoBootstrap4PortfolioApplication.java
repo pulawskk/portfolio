@@ -12,6 +12,9 @@ public class DemoBootstrap4PortfolioApplication {
         Map<String, String> properties = System.getenv();
         String passToEncrypt = properties.get("PASS_TO_ENCRYPT");
         System.setProperty("spring.mail.password", passToEncrypt);
+
+        String passToAmqp = properties.get("PASS_TO_AMQP");
+        System.setProperty("spring.rabbitmq.password", passToAmqp);
         SpringApplication.run(DemoBootstrap4PortfolioApplication.class, args);
     }
 }

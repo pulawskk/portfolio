@@ -33,6 +33,6 @@ public class EmailController {
                 .append("phone number: " + phone)
                 .append("\n\n");
         emailService.sendSimpleMessage(MY_EMAIL, "subject: " + name, stringBuilder.toString());
-        return "redirect:index#contact";
+        return "redirect:#contact";
     }
 }

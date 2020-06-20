@@ -1,26 +1,20 @@
 package com.pulawskk.demobootstrap4portfolio.services.impl;
 
 import com.pulawskk.demobootstrap4portfolio.services.EmailService;
+import com.pulawskk.demobootstrap4portfolio.services.JmsBrokerService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import javax.mail.Authenticator;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import java.util.Map;
-import java.util.Properties;
-
 @Service
 public class EmailServiceImpl implements EmailService {
 
-    private JavaMailSender javaMailSender;
+    private final JavaMailSender javaMailSender;
+    private final JmsBrokerService jmsService;
 
-    public EmailServiceImpl(JavaMailSender javaMailSender) {
+    public EmailServiceImpl(JavaMailSender javaMailSender, JmsBrokerService jmsService) {
         this.javaMailSender = javaMailSender;
+        this.jmsService = jmsService;
     }
 
     @Override
@@ -33,5 +27,6 @@ public class EmailServiceImpl implements EmailService {
         message.setFrom("pulawskk@gmail.com");
 
         javaMailSender.send(message);
+        jmsService.publish(message.toString());
     }
 }
