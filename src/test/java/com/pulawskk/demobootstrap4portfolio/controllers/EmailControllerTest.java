@@ -59,7 +59,7 @@ class EmailControllerTest {
                     .param("message", message)
                     .param("phone", phone))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(view().name("redirect:index#contact"));
+                .andExpect(view().name("redirect:#contact"));
 
         //then
         verify(emailService,times(1)).sendSimpleMessage(MY_EMAIL, subject, text);
