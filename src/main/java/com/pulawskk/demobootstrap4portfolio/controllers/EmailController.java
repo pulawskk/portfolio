@@ -4,6 +4,7 @@ import com.pulawskk.demobootstrap4portfolio.models.Email;
 import com.pulawskk.demobootstrap4portfolio.services.EmailService;
 import com.pulawskk.demobootstrap4portfolio.services.JmsBrokerService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,7 +47,7 @@ public class EmailController {
         return "redirect:#contact";
     }
 
-    @GetMapping("/emails")
+    @GetMapping(value = "/emails", produces = "application/json")
     @ResponseBody
     public ResponseEntity<List<Email>> checkEmails() {
         List<Email> emails = jmsBrokerService.collectEmails();

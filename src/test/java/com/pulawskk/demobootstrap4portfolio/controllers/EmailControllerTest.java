@@ -1,6 +1,10 @@
 package com.pulawskk.demobootstrap4portfolio.controllers;
 
+import com.pulawskk.demobootstrap4portfolio.models.Email;
+import com.pulawskk.demobootstrap4portfolio.services.JmsBrokerService;
 import com.pulawskk.demobootstrap4portfolio.services.impl.EmailServiceImpl;
+import com.pulawskk.demobootstrap4portfolio.services.impl.RabbitMQService;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,13 +12,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class EmailControllerTest {
@@ -26,6 +32,9 @@ class EmailControllerTest {
 
     @Mock
     EmailServiceImpl emailService;
+
+    @Mock
+    RabbitMQService rabbitMQService;
 
     MockMvc mockMvc;
 
@@ -64,30 +73,21 @@ class EmailControllerTest {
         //then
         verify(emailService,times(1)).sendSimpleMessage(MY_EMAIL, subject, text);
     }
-}
 
+    @Test
+    void shouldGotEmailsFromQueue_whenCheckEmailsIsCalled() throws Exception {
+        //given
+        List<Email> emails = Lists.newArrayList();
+        when(rabbitMQService.collectEmails()).thenReturn(emails);
 
-/*
-*
-* doReturn(inplayGames).when(gameService).generateInplayGamesForCompetition(anyLong());
-
-        mockMvc.perform(get("/api/events/games/competition/" + competition.getId())
-                .accept(MediaType.APPLICATION_JSON))
+        //when
+        mockMvc.perform(get("/emails")
+                    .accept(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0]['id']", is(inplayGames.get(0).getId().intValue())))
-                .andExpect(jsonPath("$[0]['uniqueId']", is(inplayGames.get(0).getUniqueId())))
-                .andExpect(jsonPath("$[0]['status']", is(inplayGames.get(0).getStatus().toString())))
-                //FIXME ticket 98
-//                .andExpect(jsonPath("$[0]['startDate']", is(inplayGames.get(0).getStartDate())))
-                .andExpect(jsonPath("$[0]['endDate']", is(inplayGames.get(0).getEndDate())))
-                .andExpect(jsonPath("$[0]['resultFootball']", isEmptyOrNullString()))
-                .andExpect(jsonPath("$[0]['teamHome']['name']", is(inplayGames.get(0).getTeamHome().getName())))
-                .andExpect(jsonPath("$[0]['teamAway']['name']", is(inplayGames.get(0).getTeamAway().getName())))
-                .andExpect(jsonPath("$[0]['competition']['name']", is(inplayGames.get(0).getCompetition().getName())))
-                .andExpect(jsonPath("$[0]['competition']['type']", is(inplayGames.get(0).getCompetition().getType().toString())));
+//                .andExpect(jsonPath("$[0]['id']", is(inplayGames.get(0).getId().intValue())))
+                .andExpect(status().isOk());
 
-        verify(gameService, times(1)).generateInplayGamesForCompetition(anyLong());
-*
-*
-* */
+        //then
+        verify(rabbitMQService, times(1)).collectEmails();
+    }
+}
