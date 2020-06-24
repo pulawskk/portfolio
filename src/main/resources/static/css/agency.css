@@ -36,7 +36,7 @@ h6 {
 }
 
 .page-section {
-  padding: 100px 0;
+  padding: 5vh 0;
 }
 
 .page-section h2.section-heading {
@@ -313,7 +313,7 @@ header.masthead .intro-text .intro-heading {
 }
 
 .portfolio-modal .modal-content {
-  padding: 100px 0;
+  padding: 5vh 0;
   text-align: center;
 }
 
