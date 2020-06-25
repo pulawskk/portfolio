@@ -69,7 +69,6 @@ public class RabbitMQService implements JmsBrokerService {
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                     String message = new String(body, "UTF-8");
-                    System.out.println("JMS game message: " + message);
                 }
             };
             channel.basicConsume(QUEUE_NAME, true, consumer);
