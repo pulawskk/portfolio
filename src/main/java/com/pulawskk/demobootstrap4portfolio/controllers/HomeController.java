@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
 
-    @Value("classpath:data/cv.pdf")
+    @Value("classpath:data/Pulawski_Karol_CV.pdf")
     private Resource resourceFile;
 
     @GetMapping({"/"})
@@ -25,7 +25,7 @@ public class HomeController {
     @ResponseBody
     public ResponseEntity downloadCv() {
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachement; filename=cv.pdf")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachement; filename=Pulawski_Karol_CV.pdf")
                 .body(resourceFile);
     }
 }

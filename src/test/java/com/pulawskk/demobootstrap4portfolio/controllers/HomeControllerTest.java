@@ -35,7 +35,7 @@ class HomeControllerTest {
     @Test
     void shouldDownloadFile_whenDownloadFileIsInvoked() throws Exception {
         mockMvc.perform(get("/download"))
-                .andExpect(header().string(HttpHeaders.CONTENT_DISPOSITION.toString(),"attachement; filename=cv.pdf"))
+                .andExpect(header().string(HttpHeaders.CONTENT_DISPOSITION.toString(),"attachement; filename=Pulawski_Karol_CV.pdf"))
                 .andExpect(status().isOk());
     }
 }
